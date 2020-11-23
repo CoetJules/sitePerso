@@ -1,0 +1,43 @@
+<div class="col-xs-12">
+  <h2>Liste des pays</h2>
+
+  <p>Mis à jour (a venir)</p>
+
+  <ul class="list-group">
+    <app-pays
+      *ngFor="let unPays of pays"
+      [unPaysName]="unPays.name"
+      [id]="unPays.id"
+    ></app-pays>
+  </ul>
+</div>
+
+<button (click)="getPaysApi()">Récupération des pays via l'api</button>
+
+<button class="btn btn-primary" (click)="onSave()">
+  Enregistrer les appareils
+</button>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <br /><br /><br />
+      <div class="container">
+        <li
+          class="list-group-item"
+          routerLinkActive="active"
+          *ngFor="let pay of pays"
+        >
+          <p *ngFor>
+            Nom du pays : {{ payName }}
+            <a routerLink="../paysDesc"></a>
+          </p>
+        </li>
+        <br />
+        <button class="btn btn-success" (click)="paysDescription()">
+          test changement de page
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
