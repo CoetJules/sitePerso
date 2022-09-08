@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PaysService } from '../services/pays.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { PaysDescriptionComponent } from 'src/app/pays-Description/pays-description.component';
 import { Subscription } from 'rxjs';
 
+// Ce component affiche la liste
 @Component({
   selector: 'app-pays-list',
   templateUrl: './pays-list.component.html',
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class PaysListComponent implements OnInit {
   @Input() payName: string;
+  name: string;
 
   constructor(
     private paysService: PaysService,
@@ -35,6 +36,19 @@ export class PaysListComponent implements OnInit {
     this.paysService.emitPaysSubject();
     console.log('pays-lste component pays');
     console.log(this.pays);
+  }
+
+  //Fontion qui permet de faire une recherche sur la liste des pays selon son nom passer en paramétre récupérer via l'input dans le component
+  Search() {
+    if (this.name != '') {
+      this.pays = this.pays.filter((res) => {
+        return res.name
+          .toLocaleLowerCase()
+          .match(this.name.toLocaleLowerCase());
+      });
+    } else if (this.name == '') {
+      this.ngOnInit();
+    }
   }
 
   getPaysApi() {

@@ -3,17 +3,37 @@
 
   <p>Mis à jour (a venir)</p>
 
+  <!-- Champ de recherche -->
+  <!--[(ngModel)]="name" permet de récupére la valeur ecrite dans l'input dans une variable 
+      (input)="Search()" permet d'appeller la fonction search du component.ts-->
+  <input
+    type="text"
+    [(ngModel)]="name"
+    (input)="Search()"
+    placeholder="chercher un pays !"
+  />
+
+  {{ name }}
+
+  <!-- Affichage de la liste de pays -->
   <ul class="list-group">
-    <app-pays
-      *ngFor="let unPays of pays"
-      [unPaysName]="unPays.name"
-      [id]="unPays.id"
-    ></app-pays>
+    <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
+    <tr>
+      <app-pays
+        *ngFor="let unPays of pays"
+        [unPaysName]="unPays.name"
+        [id]="unPays.id"
+        [currencies]="unPays.currencies"
+      ></app-pays>
+    </tr>
+    <!--</cdk-virtual-scroll-viewport>-->
   </ul>
 </div>
 
+<!-- Boutton permettant de récupérer la liste des pays -->
 <button (click)="getPaysApi()">Récupération des pays via l'api</button>
 
+<!-- Boutton permettant de sauvegarder les pays dans une base firebase-->
 <button class="btn btn-primary" (click)="onSave()">
   Enregistrer les appareils
 </button>

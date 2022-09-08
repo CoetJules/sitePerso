@@ -12,6 +12,7 @@ export class PaysService {
 
   constructor(private httpClient: HttpClient) {}
 
+  //Retourne un pays selon son id
   getPaysById(id: number) {
     const unPays = this.pays.find((paysObject) => {
       return paysObject.id === id;
@@ -19,6 +20,7 @@ export class PaysService {
     return unPays;
   }
 
+  //Retourne un pays selon son nom
   getPaysByName(name: string) {
     const unPays = this.pays.find((paysObject) => {
       return paysObject.name === name;
@@ -26,6 +28,7 @@ export class PaysService {
     return unPays;
   }
 
+  //Retourne la monnaie selon le nom d'un pays
   getCurrencieByName(name: string) {
     const unPays = this.pays.find((paysObject) => {
       if (paysObject.name === name) {
@@ -41,25 +44,29 @@ export class PaysService {
   } // autre moyen de filtrer un tableau
 
   emitPaysSubject() {
-    this.paysSubject.next(this.pays.slice());
+    this.paysSubject.next(this.pays);
   }
 
+  //Recupérer une liste de pays via l'api restcountries
+  /**https://projetpays-e6a52.firebaseio.com/pays.json base de donnée perso possiblement plus a jour
+   * https://restcountries.eu/rest/v2/all déprécier
+   * https://restcountries.com/v3.1/all nouvelle version de l'api, format JSON plus correspondant
+   */
   getPaysFromApi() {
-    this.httpClient
-      .get<any[]>('https://restcountries.eu/rest/v2/all')
-      .subscribe(
-        (response) => {
-          this.pays = response;
-          this.emitPaysSubject();
-        },
-        (error) => {
-          console.log('Erreur ! : ' + error);
-        }
-      );
+    this.httpClient.get<any[]>('https://restcountries.com/v2/all').subscribe(
+      (response) => {
+        this.pays = response;
+        this.emitPaysSubject();
+      },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
     console.log('getPaysFromApi');
     console.log(this.pays);
   }
 
+  //Sauvegarde de la liste sur un repo firebase
   savePaysToServer() {
     this.httpClient
       .put('https://projetpays-e6a52.firebaseio.com/pays.json', this.pays)

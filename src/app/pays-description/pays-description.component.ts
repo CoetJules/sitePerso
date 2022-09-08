@@ -9,7 +9,8 @@ import { PaysService } from '../services/pays.service';
 })
 export class PaysDescriptionComponent implements OnInit {
   name: string;
-  currency: string;
+  currencies: any[];
+  nameCurrencie: string;
   id: number;
 
   constructor(
@@ -18,13 +19,17 @@ export class PaysDescriptionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.id = this.router.snapshot.params['id'];
-    // this.name = this.paysService.getPaysById(+this.id).name;
+    // Récupére le nom du pays passer en parramétre de pays.component
     this.name = this.router.snapshot.params['unPaysName'];
-    // console.log(this.id + ' ' + this.name);
-    console.log(this.name);
-    // this.nameP = this.paysService.getPaysByName(name).name;
     console.log(this.paysService.getPaysByName(this.name));
-    this.currency = this.paysService.getCurrencieByName(this.name).name;
+
+    // Instantiation de la variable currency en récupérant via la pays retournée
+    this.currencies = this.paysService.getPaysByName(this.name).currencies;
+    console.log(this.currencies);
+
+    // Parcour du tableau currencies afin de récuperer son nom
+    for (let currencie of this.currencies) {
+      this.nameCurrencie = currencie.name;
+    }
   }
 }
