@@ -12,7 +12,7 @@ export class PaysService {
 
   constructor(private httpClient: HttpClient) {}
 
-  //Retourne un pays selon son id
+  // Retourne un pays selon son id
   getPaysById(id: number) {
     const unPays = this.pays.find((paysObject) => {
       return paysObject.id === id;
@@ -20,7 +20,7 @@ export class PaysService {
     return unPays;
   }
 
-  //Retourne un pays selon son nom
+  // Retourne un pays selon son nom
   getPaysByName(name: string) {
     const unPays = this.pays.find((paysObject) => {
       return paysObject.name === name;
@@ -28,7 +28,7 @@ export class PaysService {
     return unPays;
   }
 
-  //Retourne la monnaie selon le nom d'un pays
+  // Retourne la monnaie selon le nom d'un pays
   getCurrencieByName(name: string) {
     const unPays = this.pays.find((paysObject) => {
       if (paysObject.name === name) {
@@ -39,6 +39,7 @@ export class PaysService {
   }
 
   getPaysByName2(name: string) {
+    // tslint:disable-next-line: no-shadowed-variable
     const unPays = this.pays.filter((unPays) => unPays.name === name);
     return unPays;
   } // autre moyen de filtrer un tableau
@@ -47,7 +48,7 @@ export class PaysService {
     this.paysSubject.next(this.pays);
   }
 
-  //Recupérer une liste de pays via l'api restcountries
+  // Recupérer une liste de pays via l'api restcountries
   /**https://projetpays-e6a52.firebaseio.com/pays.json base de donnée perso possiblement plus a jour
    * https://restcountries.eu/rest/v2/all déprécier
    * https://restcountries.com/v3.1/all nouvelle version de l'api, format JSON plus correspondant
@@ -69,7 +70,7 @@ export class PaysService {
     console.log(this.pays);
   }
 
-  //Sauvegarde de la liste sur un repo firebase
+  // Sauvegarde de la liste sur un repo firebase
   savePaysToServer() {
     this.httpClient
       .put('https://projetpays-e6a52.firebaseio.com/pays.json', this.pays)
