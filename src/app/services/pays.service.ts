@@ -52,11 +52,11 @@ export class PaysService {
   /**https://projetpays-e6a52.firebaseio.com/pays.json base de donnée perso possiblement plus a jour
    * https://restcountries.eu/rest/v2/all déprécier
    * https://restcountries.com/v3.1/all nouvelle version de l'api, format JSON plus correspondant
-   * https://restcountries.com/v2/all semble fonctionner
+   * https://restcountries.com/v2/all semble fonctionner 
    */
   getPaysFromApi() {
     this.httpClient
-      .get<any[]>('https://projetpays-e6a52.firebaseio.com/pays.json')
+      .get<any[]>('https://restcountries.com/v2/all')
       .subscribe(
         (response) => {
           this.pays = response;
@@ -70,10 +70,10 @@ export class PaysService {
     console.log(this.pays);
   }
 
-  // Sauvegarde de la liste sur un repo firebase
+  // Sauvegarde de la liste sur un repo firebase https://projetpays-e6a52.firebaseio.com/pays
   savePaysToServer() {
     this.httpClient
-      .put('https://projetpays-e6a52.firebaseio.com/pays.json', this.pays)
+      .put('https://projetpays-e6a52.firebaseio.com/pays', this.pays)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');

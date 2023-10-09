@@ -9,26 +9,9 @@
   <input
     type="text"
     [(ngModel)]="name"
-    (input)="Search()"
     placeholder="chercher un pays !"
+    [(ngModel)]="searchText"
   />
-
-  {{ name }}
-
-  <!-- Affichage de la liste de pays -->
-  <ul class="list-group">
-    <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
-    <tr>
-      <app-pays
-        *ngFor="let unPays of pays"
-        [unPaysName]="unPays.name"
-        [id]="unPays.id"
-        [currencies]="unPays.currencies"
-      ></app-pays>
-    </tr>
-    <!--</cdk-virtual-scroll-viewport>-->
-  </ul>
-</div>
 
 <!-- Boutton permettant de récupérer la liste des pays -->
 <button (click)="getPaysApi()">Récupération des pays via l'api</button>
@@ -37,6 +20,21 @@
 <button class="btn btn-primary" (click)="onSave()">
   Enregistrer les appareils
 </button>
+
+  <!-- Affichage de la liste de pays -->
+  <ul class="list-group">
+    <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
+    <tr>
+      <app-pays
+        *ngFor="let unPays of pays | filterPipe: searchText"
+        [unPaysName]="unPays.name"
+        [id]="unPays.id"
+        [currencies]="unPays.currencies"
+      ></app-pays>
+    </tr>
+    <!--</cdk-virtual-scroll-viewport>-->
+  </ul>
+</div>
 
 <!-- <div class="container">
   <div class="row">

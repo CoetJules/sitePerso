@@ -22,6 +22,7 @@ export class PaysListComponent implements OnInit {
 
   pays: any[];
   paysSubscription: Subscription;
+  searchText;
 
   ngOnInit() {
     // this.pays = this.paysService.pays;
