@@ -1,3 +1,7 @@
+Site Monaie Pays
+Ce site est une premiere expérience en angular pour moi afin de découvrir ce language et d'approfondir mes connaissance.
+J'ai pour objectif de faire un site qui répertorie les différents pays du monde et de pouvoir afficher différent détail,, nottament la monaie du site en question, toute ces info récupérer via API gratuite et publique.
+
 # SiteMonaiePays
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
