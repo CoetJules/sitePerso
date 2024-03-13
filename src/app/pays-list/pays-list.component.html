@@ -13,20 +13,15 @@
     [(ngModel)]="searchText"
   />
 
-<!-- Boutton permettant de récupérer la liste des pays -->
-<button (click)="getPaysApi()">Récupération des pays via l'api</button>
-
-<!-- Boutton permettant de sauvegarder les pays dans une base firebase-->
-<button class="btn btn-primary" (click)="onSave()">
-  Enregistrer les appareils
-</button>
+  <!-- Boutton permettant de récupérer la liste des pays -->
+  <button (click)="getPaysApi()">Récupération des pays via l'api</button>
 
   <!-- Affichage de la liste de pays -->
   <ul class="list-group">
     <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
     <tr>
       <app-pays
-        *ngFor="let unPays of pays | filterPipe: searchText"
+        *ngFor="let unPays of pays | filterPipe : searchText"
         [unPaysName]="unPays.name"
         [id]="unPays.id"
         [currencies]="unPays.currencies"
