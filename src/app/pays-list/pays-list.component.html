@@ -26,8 +26,13 @@
   <mat-slide-toggle>Toggle me!</mat-slide-toggle>
   <!-- Affichage de la liste de pays -->
   <ul class="list-group">
-    <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
-    <tr *ngFor="let unPays of pays | filterPipe : searchText">
+    <tr
+      *ngFor="
+        let unPays of pays
+          | filterPipe : searchText
+          | paginate : { itemsPerPage: 5, currentPage: p }
+      "
+    >
       <ul class="list-group-item">
         <thead>
           <tr>
@@ -51,14 +56,8 @@
       ></app-pays>
       -->
     </tr>
-    <!--</cdk-virtual-scroll-viewport>-->
   </ul>
-  <mat-paginator
-    [length]="200"
-    [pageSize]="20"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-  >
-  </mat-paginator>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <!-- <div class="container">
