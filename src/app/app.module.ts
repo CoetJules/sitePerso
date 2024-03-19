@@ -12,6 +12,7 @@ import { PaysComponent } from './pays/pays.component';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe'; //Pipe filtre
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const appRoutes: Routes = [
   { path: 'paysList', component: PaysListComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NoopAnimationsModule,
     ScrollingModule,
+    MatSlideToggleModule,
   ],
   providers: [PaysService],
   bootstrap: [AppComponent],
