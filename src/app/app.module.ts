@@ -13,6 +13,8 @@ import { FilterPipePipe } from './pipe/filter-pipe.pipe'; //Pipe filtre
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 const appRoutes: Routes = [
   { path: 'paysList', component: PaysListComponent },
@@ -40,6 +42,8 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     ScrollingModule,
     MatSlideToggleModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [PaysService],
   bootstrap: [AppComponent],
