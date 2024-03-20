@@ -43,6 +43,7 @@
           <tr>
             <th>
               <h4>{{ unPays.name }}</h4>
+              <img src="{{ unPays.flag }}" class="flag" />
             </th>
           </tr>
         </tbody>
@@ -57,12 +58,14 @@
       -->
     </tr>
   </ul>
+
   <pagination-controls
     class="my-pagination"
     (pageChange)="p = $event"
     previousLabel="Précédent"
     nextLabel="Suivant"
-    maxSize="9"
+    maxSize="12"
+    autoHide="true"
   ></pagination-controls>
 </div>
 
