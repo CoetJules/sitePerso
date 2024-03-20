@@ -11,17 +11,23 @@ export class FilterPipePipe implements PipeTransform {
    * @param searchText search string
    * @returns list of elements filtered by search text or []
    */
-  transform(items: string[], searchText: string): any[] {
+  transform(items: any, searchText: string): any[] {
     if (!items) {
       return [];
     }
     if (!searchText) {
       return items;
     }
-    searchText = searchText.toLocaleLowerCase();
+    //console.log('Filter searchText : ' + searchText);
+    searchText = searchText.toLowerCase();
 
-    return items.filter(it => {
-      return it.toLocaleLowerCase().includes(searchText);
+    //console.log('Filter items : ' + items.toString());
+    console.log('Filter items');
+    return items.filter((it) => {
+      //console.log('Filer it : ' + it);
+      //return it.toLowerCase().includes(searchText);
+      let rIt = it.name.toLocaleLowerCase().includes(searchText);
+      return rIt;
     });
   }
 }
