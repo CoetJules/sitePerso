@@ -16,19 +16,54 @@
   <!-- Boutton permettant de récupérer la liste des pays -->
   <button (click)="getPaysApi()">Récupération des pays via l'api</button>
 
+  <button class="btn btn-primary" (click)="onSave()">
+    Enregistrer les appareils
+  </button>
+
+  <!--   //TO DO: //ajout pagination //material ?
+-->
+
+  <mat-slide-toggle>Toggle me!</mat-slide-toggle>
   <!-- Affichage de la liste de pays -->
   <ul class="list-group">
-    <!--<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">-->
-    <tr>
-      <app-pays
-        *ngFor="let unPays of pays | filterPipe : searchText"
+    <tr
+      *ngFor="
+        let unPays of pays
+          | filterPipe : searchText
+          | paginate : { itemsPerPage: 5, currentPage: p }
+      "
+    >
+      <ul class="list-group-item">
+        <thead>
+          <tr>
+            <th>Nom du pays :</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              <h4>{{ unPays.name }}</h4>
+            </th>
+          </tr>
+        </tbody>
+        <a [routerLink]="unPays.name">Détail</a>
+      </ul>
+
+      <!--  <app-pays
         [unPaysName]="unPays.name"
         [id]="unPays.id"
         [currencies]="unPays.currencies"
       ></app-pays>
+      -->
     </tr>
-    <!--</cdk-virtual-scroll-viewport>-->
   </ul>
+  <pagination-controls
+    class="my-pagination"
+    (pageChange)="p = $event"
+    previousLabel="Précédent"
+    nextLabel="Suivant"
+    maxSize="9"
+  ></pagination-controls>
 </div>
 
 <!-- <div class="container">

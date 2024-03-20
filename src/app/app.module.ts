@@ -12,6 +12,10 @@ import { PaysComponent } from './pays/pays.component';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe'; //Pipe filtre
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const appRoutes: Routes = [
   { path: 'paysList', component: PaysListComponent },
@@ -38,6 +42,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NoopAnimationsModule,
     ScrollingModule,
+    NgxPaginationModule,
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    MatTableModule,
   ],
   providers: [PaysService],
   bootstrap: [AppComponent],

@@ -27,6 +27,7 @@
     "codelyzer": "^6.0.0",
     "core-js": "^2.5.4",
     "karma": "~6.4.3",
+    "ngx-pagination": "^6.0.3",
     "npm-check-updates": "^16.1.2",
     "rxjs": "^6.4.0",
     "save": "^2.4.0",
