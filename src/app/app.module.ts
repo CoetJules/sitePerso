@@ -16,9 +16,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PlaygroundComponent } from './playground/playground.component';
 
 const appRoutes: Routes = [
   { path: 'paysList', component: PaysListComponent },
+  { path: 'playground', component: PlaygroundComponent },
   { path: 'paysList/:unPaysName', component: PaysDescriptionComponent },
   { path: ':unPaysName', component: PaysDescriptionComponent },
   { path: 'paysDesc', component: PaysDescriptionComponent },
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     AppareilViewComponent,
     PaysComponent,
     FilterPipePipe,
+    PlaygroundComponent,
   ],
   imports: [
     BrowserModule,
