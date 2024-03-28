@@ -22,7 +22,7 @@ export class FilterPipePipe implements PipeTransform {
     searchText = searchText.toLowerCase();
 
     //console.log('Filter items : ' + items.toString());
-    console.log('Filter items');
+    //console.log('Filter items');
     return items.filter((it) => {
       //console.log('Filer it : ' + it);
       //return it.toLowerCase().includes(searchText);

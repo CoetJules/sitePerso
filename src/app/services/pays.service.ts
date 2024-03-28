@@ -52,22 +52,20 @@ export class PaysService {
   /**https://projetpays-e6a52.firebaseio.com/pays.json base de donnée perso possiblement plus a jour
    * https://restcountries.eu/rest/v2/all déprécier
    * https://restcountries.com/v3.1/all nouvelle version de l'api, format JSON plus correspondant
-   * https://restcountries.com/v2/all semble fonctionner 
+   * https://restcountries.com/v2/all semble fonctionner
    */
   getPaysFromApi() {
-    this.httpClient
-      .get<any[]>('https://restcountries.com/v2/all')
-      .subscribe(
-        (response) => {
-          this.pays = response;
-          this.emitPaysSubject();
-        },
-        (error) => {
-          console.log('Erreur ! : ' + error);
-        }
-      );
+    this.httpClient.get<any[]>('https://restcountries.com/v2/all').subscribe(
+      (response) => {
+        this.pays = response;
+        this.emitPaysSubject();
+      },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
     console.log('getPaysFromApi');
-    console.log(this.pays);
+    //console.log(this.pays);
   }
 
   // Sauvegarde de la liste sur un repo firebase https://projetpays-e6a52.firebaseio.com/pays

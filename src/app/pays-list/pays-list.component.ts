@@ -37,7 +37,7 @@ export class PaysListComponent implements OnInit {
     );
     this.paysService.emitPaysSubject();
     console.log('pays-lste component pays');
-    console.log(this.pays);
+    //console.log(this.pays);
   }
 
   //Fontion qui permet de faire une recherche sur la liste des pays selon son nom passer en paramétre récupérer via l'input dans le component
@@ -51,9 +51,9 @@ export class PaysListComponent implements OnInit {
         //   'Recherche resultat : ' +
         //     res.name.toLowerCase().match(this.name.toLowerCase())
         // );
-        console.log(
-          'Recherche resultat dan filter : ' + res.name.match(this.name)
-        );
+        // console.log(
+        //   'Recherche resultat dan filter : ' + res.name.match(this.name)
+        // );
         return res.name.toLowerCase().match(this.name.toLowerCase());
       });
     } else if (this.name == '') {
@@ -65,7 +65,7 @@ export class PaysListComponent implements OnInit {
   getPaysApi() {
     this.paysService.getPaysFromApi();
     console.log('pays-lste component pays');
-    console.log(this.pays);
+    //console.log(this.pays);
   }
 
   //Permet de sauvegarder la liste dans une bdd firebase

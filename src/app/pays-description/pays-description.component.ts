@@ -21,16 +21,18 @@ export class PaysDescriptionComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log('Nous somme dans le composant description !');
+
     // Récupére le nom du pays passer en parramétre de pays-list.component
     this.name = this.router.snapshot.params['unPaysName'];
-    console.log(this.paysService.getPaysByName(this.name));
+    //console.log(this.paysService.getPaysByName(this.name));
 
     // On récupére le pays via son nom passer en parramétre de pays-list.component
     this.pays = this.paysService.getPaysByName(this.name);
 
     // Instantiation de la variable currency en récupérant via le pays retournée
     this.currencies = this.paysService.getPaysByName(this.name).currencies;
-    console.log(this.currencies);
+    //console.log(this.currencies);
 
     // Parcour du tableau currencies afin de récuperer son nom
     for (let currencie of this.currencies) {

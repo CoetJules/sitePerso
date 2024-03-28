@@ -21,3 +21,11 @@ body {
 .flag {
   height: 5rem;
 }
+
+.bg {
+  background: linear-gradient(
+    45deg,
+    rgba(83, 125, 210, 0.4),
+    rgba(178, 30, 123, 0.4) 100%
+  );
+}
