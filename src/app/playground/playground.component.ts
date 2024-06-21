@@ -57,4 +57,58 @@ export class PlaygroundComponent implements OnInit {
       });
     });
   }
+
+  showSlider() {
+    var x = document.getElementById("slider");
+    var y = document.getElementById("shadow");
+    if (x.style.display === "none" || x.style.display === "") {
+      x.style.display = "flex";
+      if (y.style.display === "flex"){
+        y.style.display = "none";
+      }
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  showShadow() {
+    var x = document.getElementById("shadow");
+    var y = document.getElementById("slider");
+    if (x.style.display === "none" || x.style.display === "") {
+      if (y.style.display === "flex"){
+        y.style.display = "none";
+      }
+      x.style.display = "flex";
+      let text = document.getElementById("text");
+      let light = document.getElementById("light");
+      document.addEventListener("mousemove", function (event) {
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+        light.style.left = mouseX + "px";
+        light.style.top = mouseY + "px";
+
+        let distanceX = mouseX - text.offsetLeft - text.offsetWidth / 2;
+        let distanceY = mouseY - text.offsetTop - text.offsetHeight / 2;
+
+        let newShadow = "";
+        for (var i = 0; i < 200; i++) {
+          let shadowX = -distanceX * (i / 200);
+          let shadowY = -distanceY * (i / 200);
+          let opacity = 1 - i / 100;
+          newShadow +=
+            (newShadow ? "," : "") +
+            shadowX +
+            "px " +
+            shadowY +
+            "px 0 rgba(33,33,33," +
+            opacity +
+            ")";
+        }
+        text.style.textShadow = newShadow;
+      });
+    } else {
+      x.style.display = "none";
+    }
+  }
+
 }
